@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai';
 
+// Edge Runtime 설정 추가
+export const runtime = 'edge';
+
 // ChatGPTMessage 타입이 사용되지 않으면 제거하거나 주석 처리합니다.
 // type ChatGPTMessage = {
 //   role: string;
