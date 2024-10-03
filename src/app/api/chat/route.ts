@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai';
 
-type ChatGPTMessage = {
-  role: string;
-  content: string;
-};
-
-// ChatGPTResponse 타입 정의를 제거하거나 사용하는 곳이 있다면 유지합니다.
+// ChatGPTMessage 타입이 사용되지 않으면 제거하거나 주석 처리합니다.
+// type ChatGPTMessage = {
+//   role: string;
+//   content: string;
+// };
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || ''
