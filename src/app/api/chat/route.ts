@@ -1,19 +1,8 @@
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai';
-
-type ChatGPTMessage = {
-  role: string;
-  content: string;
-};
-
-type ChatGPTResponse = {
-  choices: Array<{
-    message: ChatGPTMessage;
-  }>;
-};
+import OpenAI from 'openai'
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || ''
+  apiKey: process.env.OPENAI_API_KEY
 })
 
 export async function POST(request: Request) {
@@ -38,24 +27,12 @@ export async function POST(request: Request) {
     const aiResponse = completion.choices[0].message.content
 
     return NextResponse.json({ message: aiResponse })
-  } catch (error: unknown) {
-    console.error('Detailed error in API route:', error);
-    
-    if (error instanceof Error) {
-      return NextResponse.json({ 
-        error: 'An error occurred while processing your request.',
-        details: error.message,
-        stack: error.stack
-      }, { status: 500 });
-    } else if (typeof error === 'string') {
-      return NextResponse.json({ 
-        error: 'An error occurred.',
-        details: error
-      }, { status: 500 });
-    } else {
-      return NextResponse.json({ 
-        error: 'An unknown error occurred.',
-      }, { status: 500 });
-    }
+  } catch (error) {
+    console.error('Detailed error in API route:', error)
+    return NextResponse.json({ 
+      error: 'An error occurred while processing your request.',
+      details: error.message,
+      stack: error.stack
+    }, { status: 500 })
   }
 }
