@@ -12,6 +12,7 @@ export default function ChatInterface() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!input.trim()) return
+
     
 
     // 사용자 메시지 추가
