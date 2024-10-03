@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  // 'appDir' 옵션 제거
+  // 'appDir' 옵션은 제거됩니다.
 }
 
 module.exports = nextConfig
