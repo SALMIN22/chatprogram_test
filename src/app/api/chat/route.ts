@@ -27,12 +27,19 @@ export async function POST(request: Request) {
     const aiResponse = completion.choices[0].message.content
 
     return NextResponse.json({ message: aiResponse })
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Detailed error in API route:', error)
-    return NextResponse.json({ 
-      error: 'An error occurred while processing your request.',
-      details: error.message,
-      stack: error.stack
-    }, { status: 500 })
+    
+    if (error instanceof Error) {
+      return NextResponse.json({ 
+        error: 'An error occurred while processing your request.',
+        details: error.message,
+        stack: error.stack
+      }, { status: 500 })
+    } else {
+      return NextResponse.json({ 
+        error: 'An unknown error occurred.',
+      }, { status: 500 })
+    }
   }
 }
