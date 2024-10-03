@@ -23,6 +23,10 @@ const nextConfig = {
       },
     ]
   },
+  
+  // HTML 파일을 사용하도록 설정
+  trailingSlash: true,
+  distDir: 'out',
 }
 
 // 설정을 내보냅니다.
