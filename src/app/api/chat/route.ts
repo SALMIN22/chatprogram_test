@@ -6,11 +6,7 @@ type ChatGPTMessage = {
   content: string;
 };
 
-type ChatGPTResponse = {
-  choices: Array<{
-    message: ChatGPTMessage;
-  }>;
-};
+// ChatGPTResponse 타입 정의를 제거하거나 사용하는 곳이 있다면 유지합니다.
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || ''
